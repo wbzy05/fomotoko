@@ -40,3 +40,14 @@ foreach ($steps as $step) {
         }
     }
 }
+
+// Shuffle the probable locations
+shuffle($probableLocations);
+
+// Select a random location as the hidden item
+$hiddenItemLocation = array_shift($probableLocations);
+
+// Update the grid with the hidden item
+$hiddenItemX = $hiddenItemLocation[0];
+$hiddenItemY = $hiddenItemLocation[1];
+$grid[$hiddenItemX][$hiddenItemY] = '$';
