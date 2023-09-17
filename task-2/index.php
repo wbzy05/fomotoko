@@ -51,3 +51,42 @@ $hiddenItemLocation = array_shift($probableLocations);
 $hiddenItemX = $hiddenItemLocation[0];
 $hiddenItemY = $hiddenItemLocation[1];
 $grid[$hiddenItemX][$hiddenItemY] = '$';
+
+// Output HTML and CSS for the grid
+echo '<html>';
+echo '<head>';
+echo '<style>';
+echo 'pre { font-family: monospace; font-size: 20px; }';
+echo '</style>';
+echo '</head>';
+echo '<body>';
+echo '<pre>';
+
+// Display the grid
+foreach ($grid as $row) {
+    if (is_string($row)) {
+        foreach (str_split($row) as $char) {
+            echo htmlspecialchars($char);
+        }
+    }
+    echo PHP_EOL;
+}
+
+echo '</pre>';
+echo '</body>';
+echo '</html>';
+
+// Output the list of probable coordinate points
+echo "\nProbable item locations:" . PHP_EOL;
+foreach ($probableLocations as $location) {
+    echo "({$location[0]}, {$location[1]})" . PHP_EOL;
+}
+
+// Output the actual hidden item location
+echo "<br>";
+echo "\nHidden item location: ({$hiddenItemX}, {$hiddenItemY})" . PHP_EOL;
+
+// Button for restart the game
+echo "<br>";
+echo "<br>";
+echo "<button onClick='window.location.reload();'>Refresh the game</button>";
