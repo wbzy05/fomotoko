@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id'); // Assuming orders are associated with users.
+            $table->decimal('total_amount', 8, 2); // Total order amount.
+            $table->tinyInteger('status')->comment('0: Pending, 1: completed, 2: cancelled');
             $table->timestamps();
         });
     }
